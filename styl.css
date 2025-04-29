@@ -1,0 +1,24 @@
+body{
+    text-align: center;
+    background-color: rgb(220, 255, 255);
+}
+header{
+    background-color: rgb(190, 255, 255);
+}
+ol{
+    overflow: hidden;
+    background-color: rgb(190, 255, 255);
+}
+.div_z_lista{
+    text-align: center;
+    width: 100px;
+    margin: auto;
+}
+input{
+    margin-bottom: 5px;
+}
+button{
+    background-color:rgb(85, 255, 255);
+    border: none;
+    padding: 5px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortowanie bąbelkowe</title>
+    <link rel="stylesheet" type="text/css" href="styl.css">
+</head>
+<body>
+    <header>
+        <h1>Sortowanie Bąbelkowe</h1>
+        Wybierz długość listy: <input id="dlugosc" type="number" value="10"/><br>
+        <button onclick="generujListe()">generuj listę</button><br>
+    </header>
+
+    <!--pierzwsza, nieposortowana lista-->
+    <div id="pierwszy_div" style="visibility: collapse;">
+        <h2 >Nieposortowana lista:</h2>
+        <button onclick="zmienRozmiarListy1()" id="buttonRozmiar">zmniejsz listę</button>
+        <div class="div_z_lista">
+            <ol id="pierwsza_lista">    </ol>
+        </div>
+        <button onclick="sortujListe()">Posortuj listę</button>
+    </div>
+    
+    <!--druga, posortowana lista-->
+    <div id="drugi_div" style="visibility: collapse;">
+        <h2>Posortowana lista:</h2>
+        <div class="div_z_lista">
+            <ol id="druga_lista">   </ol>
+        </div>
+    </div>
+</body>
+<script>
+    let tablica = new Array();
+    function generujListe(){
+        let dlugosc = document.getElementById("dlugosc").value;
+        let lista = document.getElementById("pierwsza_lista");
+        tablica = new Array(dlugosc);
+        lista.innerHTML = "";
+        for(let i = 0; i<dlugosc; i++){
+            tablica[i] = Math.floor(Math.random() * 1000);
+            lista.innerHTML += "<li>"+ tablica[i]+"</li>";
+        }
+        document.getElementById("pierwszy_div").style.visibility = "visible";
+    }
+    function sortujListe(){
+        var temp
+        //początek samego sortowania
+        for(let g = tablica.length - 1; g > 0; g--){
+            for(let i = 0; i<g; i++){
+                if(tablica[i]> tablica[i+1]){
+                    temp = tablica[i];
+                    tablica[i] = tablica[i + 1];
+                    tablica[i + 1] = temp;
+                }
+            }
+        }
+        //koniec sortowania
+        document.getElementById("drugi_div").style.visibility = "visible";
+        let lista = document.getElementById("druga_lista");
+        lista.innerHTML = "";
+        for(let i = 0; i < tablica.length; i++){
+            lista.innerHTML += "<li>" + tablica[i] + "</div>";
+        }
+    }
+    function zmienRozmiarListy1(){
+        let lista = document.getElementById("pierwsza_lista");
+        if(lista.style.height != "110px"){
+            lista.style.height = "110px";
+            document.getElementById("buttonRozmiar").innerText = "Pokaż całą listę";
+        }else{
+            lista.style.height = "auto"
+            document.getElementById("buttonRozmiar").innerText = "Zmniejsz listę";
+        }
+    }
+</script>
+</html>
