@@ -1,0 +1,14 @@
+Pobierz tablica[];
+górna_granica_sortowania = tablica.dlugosc;
+dopóki (górna_granica_sortowania<0){
+	aktualny_indeks = 0;
+	dopóki (aktualny_indeks < górna_granica_sortowania){
+		jeżeli( tablica[aktualny_indeks] > tablica[aktualny_indeks + 1]){
+			tymczasowa_zmienna = tablica[aktualny_indeks];
+			tablica[aktualny_indeks] = tablica[aktualny_indeks + 1];
+			tablica[aktualny_indeks + 1] = tymaczasowa_zmienna;
+		}
+		aktualny_indeks++;
+	}
+	górna_granica_sortowania--;
+}
